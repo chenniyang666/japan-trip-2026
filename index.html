@@ -1,252 +1,865 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>日本行程预约清单</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
-        .subtitle {
-            text-align: center;
-            color: #7f8c8d;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-        .section {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #ecf0f1;
-        }
-        .section-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #2c3e50;
-            display: flex;
-            align-items: center;
-        }
-        .section-title::before {
-            content: "";
-            display: inline-block;
-            width: 4px;
-            height: 16px;
-            background: #3498db;
-            margin-right: 8px;
-            border-radius: 2px;
-        }
-        .item {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border-left: 4px solid #3498db;
-        }
-        .item-header {
-            display: flex;
-            justify-content: between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .item-title {
-            font-weight: 600;
-            font-size: 16px;
-            color: #2c3e50;
-        }
-        .item-meta {
-            font-size: 14px;
-            color: #7f8c8d;
-        }
-        .item-details {
-            font-size: 14px;
-            color: #555;
-            line-height: 1.5;
-        }
-        .priority-high {
-            border-left-color: #e74c3c;
-        }
-        .priority-medium {
-            border-left-color: #f39c12;
-        }
-        .priority-low {
-            border-left-color: #27ae60;
-        }
-        .tag {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            margin-right: 5px;
-        }
-        .tag-important {
-            background: #ffeaa7;
-            color: #d35400;
-        }
-        .tag-suggested {
-            background: #a29bfe;
-            color: white;
-        }
-        .tag-optional {
-            background: #55efc4;
-            color: #00b894;
-        }
-        .timeline {
-            position: relative;
-            padding-left: 20px;
-        }
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #3498db;
-        }
-        .timeline-item {
-            position: relative;
-            margin-bottom: 20px;
-            padding-left: 20px;
-        }
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            left: -9px;
-            top: 5px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #3498db;
-        }
-        .timeline-date {
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        .timeline-content {
-            margin-top: 5px;
-            font-size: 14px;
-        }
-        .emoji {
-            font-size: 18px;
-            margin-right: 5px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇯🇵 日本行程预约清单 (2026.05.30 - 06.07)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+  :root {
+    --primary: #e63946;
+    --primary-light: #ff6b6b;
+    --secondary: #457b9d;
+    --accent: #f4a261;
+    --dark: #1d3557;
+    --light: #f1faee;
+    --bg: #fafafa;
+    --card-bg: #ffffff;
+    --text: #2b2b2b;
+    --text-light: #666;
+    --border: #e8e8e8;
+    --red: #e63946;
+    --orange: #f4a261;
+    --yellow: #e9c46a;
+    --green: #2a9d8f;
+    --blue: #457b9d;
+    --purple: #6c5ce7;
+    --gray: #95a5a6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', 'Noto Sans JP', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 48px 20px 40px;
+    background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+    color: white;
+    border-radius: 0 0 24px 24px;
+    margin: 0 -20px 32px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .header .subtitle {
+    font-size: 15px;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+
+  .header .date-badge {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 6px 20px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    font-size: 14px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 36px;
+    padding: 16px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-light);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 32px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .section-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .section-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .section-header .section-desc {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 300;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  /* Card */
+  .card {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  .card.priority-high { border-left-color: var(--red); }
+  .card.priority-mid { border-left-color: var(--orange); }
+  .card.priority-low { border-left-color: var(--green); }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .card-title .day-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 6px;
+    vertical-align: middle;
+    background: var(--light);
+    color: var(--dark);
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 12px;
+  }
+
+  .card-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    transition: opacity 0.2s;
+  }
+
+  .link-btn:hover { opacity: 0.85; }
+
+  .link-btn.official { background: var(--secondary); }
+  .link-btn.third-party { background: var(--green); }
+  .link-btn.phone { background: var(--purple); }
+
+  .card-note {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #fff8f0;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #8b6914;
+    line-height: 1.6;
+  }
+
+  .card-note strong { color: #c47a00; }
+
+  /* Urgency tag */
+  .urgency {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .urgency.now { background: #fee; color: var(--red); }
+  .urgency.soon { background: #fff3e0; color: #e67e22; }
+  .urgency.normal { background: #e8f5e9; color: var(--green); }
+
+  /* Timeline */
+  .timeline-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .timeline-when {
+    text-align: right;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-light);
+  }
+
+  /* Checklist */
+  .checklist {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .checklist h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+
+  .checklist-item:last-child { border-bottom: none; }
+
+  .checklist-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: var(--primary);
+    flex-shrink: 0;
+  }
+
+  .checklist-item.done {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+
+  /* Warning box */
+  .warning-box {
+    background: #fff5f5;
+    border: 1px solid #ffcdd2;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 24px 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .warning-box .warn-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    line-height: 1.4;
+  }
+
+  .warning-box .warn-text {
+    font-size: 14px;
+    color: #c62828;
+    line-height: 1.7;
+  }
+
+  .warning-box .warn-text strong { color: #b71c1c; }
+
+  /* Info box */
+  .info-box {
+    background: #e3f2fd;
+    border: 1px solid #90caf9;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 24px 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .info-box .info-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .info-box .info-text {
+    font-size: 14px;
+    color: #1565c0;
+    line-height: 1.7;
+  }
+
+  /* No-bookmark section */
+  .no-bookmark-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+  }
+
+  .no-bookmark-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    font-size: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+
+  .no-bookmark-item .icon { font-size: 18px; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 32px 0;
+    font-size: 13px;
+    color: var(--gray);
+    border-top: 1px solid var(--border);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .container { padding: 12px 12px 40px; }
+    .header { padding: 32px 16px 28px; margin: 0 -12px 24px; }
+    .header h1 { font-size: 22px; }
+    .card { padding: 16px; }
+    .card-top { flex-direction: column; }
+    .legend { gap: 8px; }
+    .timeline-row { grid-template-columns: 70px 1fr; }
+    .section-header .section-desc { margin-left: 0; }
+  }
+
+  @media print {
+    body { background: white; }
+    .card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+    .header { border-radius: 0; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>🇯🇵 日本行程预约清单</h1>
-        <div class="subtitle">
-            2026年5月30日 (六) — 6月7日 (日) · 9天8晚<br>
-            📅 生成日期：2026年4月1日 · 出发倒计时 59天
-        </div>
 
-        <div class="section">
-            <div class="section-title">✅ 预订进度追踪（可勾选）</div>
-            <div class="item">
-                <div class="item-details">
-                    <strong>酒店付款</strong> — 热海Resorpia (5/29前) + 东横INN成田 (6/5前)<br>
-                    <strong>高速巴士</strong> — 新宿→河口湖 (5/3起可订)<br>
-                    <strong>富士急巴士</strong> — 河口湖→五合目 (5/3起可订)<br>
-                    <strong>景点门票</strong> — 晴空塔 / SHIBUYA SKY / 水族馆 / MOA美术馆<br>
-                    <strong>餐厅预约</strong> — 鉢の木 / 初魚 (出发前2周)<br>
-                    <strong>NEX特快车票</strong> — 成田↔东京往返（可选）<br>
-                    🚌
-                </div>
-            </div>
-        </div>
+<div class="container">
 
-        <div class="section">
-            <div class="section-title">🚌 交通预订（最重要！）</div>
-            <div class="item priority-high">
-                <div class="item-header">
-                    <div class="item-title">🚌 新宿 → 河口湖 高速巴士 D5 · 6/3(三)</div>
-                    <span class="tag tag-important">5/3起可订</span>
-                </div>
-                <div class="item-details">
-                    🕐 出发时间：约08:00-09:00 💰 票价：约¥180（2,400円） ⏱ 车程：约1小时50分<br>
-                    ⚠️ 最重要！座位数有限（尤其周末/假日），建议5月3日开售当天就抢票。新宿高速巴士总站（新宿駅西口）出发。4岁儿童通常免费（坐在大人膝上）或购买儿童票（半价），具体看运营公司规定。<br>
-                    🌐 Highway-buses官网 🌐 富士急巴士 🎫 Klook
-                </div>
-            </div>
+  <!-- Header -->
+  <div class="header">
+    <h1>🇯🇵 日本行程预约清单</h1>
+    <div class="subtitle">2026年5月30日 (六) — 6月7日 (日) · 9天8晚</div>
+    <div class="date-badge">📅 生成日期：2026年4月1日 · 出发倒计时 59天</div>
+  </div>
 
-            <div class="item priority-high">
-                <div class="item-header">
-                    <div class="item-title">🚌 河口湖 → 富士山五合目 富士急巴士 D5 · 6/3(三)</div>
-                    <span class="tag tag-important">5/3起可订</span>
-                </div>
-                <div class="item-details">
-                    🕐 出发时间：约10:00 💰 票价：约¥80（1,100円）单程 ⏱ 车程：约50分钟<br>
-                    ⚠️ 配合高速巴士时间：约09:50到达河口湖站，出站后步行5分钟到巴士站，10:00左右有班次。富士急巴士座位较少，建议提前在网上预约。冬季（11-4月）可能有减班，6月正常运营。<br>
-                    🌐 富士急巴士预约 🌐 富士急旅行
-                </div>
-            </div>
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div> 强烈建议预订（不预订可能没位）</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div> 建议预订（预订更省心）</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> 当天购票即可</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div> 需电话/特殊渠道预约</div>
+  </div>
 
-            <div class="item priority-low">
-                <div class="item-header">
-                    <div class="item-title">🚆 N'EX 成田特快（成田↔东京往返）D1+D9</div>
-                    <span class="tag tag-optional">可选</span>
-                </div>
-                <div class="item-details">
-                    💰 往返特价：¥260（4,000円） ⏱ 车程：约55分钟 👶 儿童票：半价<br>
-                    可买可不买：NEX往返特价票（N'EX Round Trip Discount）需在成田机场1楼JR东日本旅行服务中心（View Plaza）持护照购买，仅限外国人。当天买也可以，但建议到机场后第一时间去买。也可以用Suica/Pasmo直接刷卡进站（无折扣）。<br>
-                    🌐 JR东日本官网
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">🎫 景点门票预订</div>
-            <!-- 景点门票内容 -->
-        </div>
-
-        <div class="section">
-            <div class="section-title">🍣 餐厅预约</div>
-            <!-- 餐厅预约内容 -->
-        </div>
-
-        <div class="section">
-            <div class="section-title">🏨 酒店付款提醒</div>
-            <!-- 酒店付款内容 -->
-        </div>
-
-        <div class="section">
-            <div class="section-title">✅ 无需预订</div>
-            <!-- 无需预订内容 -->
-        </div>
-
-        <div class="section">
-            <div class="section-title">📅 建议预订时间线</div>
-            <!-- 时间线内容 -->
-        </div>
-
-        <div class="section">
-            <div class="item">
-                <div class="item-details" style="text-align: center; color: #7f8c8d; font-size: 12px;">
-                    🇯🇵 日本行程预约清单 · 出发倒计时 59天 · 祝旅途愉快！<br>
-                    所有链接和价格信息仅供参考，请以官方网站最新信息为准
-                </div>
-            </div>
-        </div>
+  <!-- Checklist -->
+  <div class="checklist">
+    <h3>✅ 预订进度追踪（可勾选）</h3>
+    <div class="checklist-item">
+      <input type="checkbox" id="chk1" onchange="toggleDone(this)">
+      <label for="chk1"><strong>酒店付款</strong> — 热海Resorpia (5/29前) + 东横INN成田 (6/5前)</label>
     </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="chk2" onchange="toggleDone(this)">
+      <label for="chk2"><strong>高速巴士</strong> — 新宿→河口湖 (5/3起可订)</label>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="chk3" onchange="toggleDone(this)">
+      <label for="chk3"><strong>富士急巴士</strong> — 河口湖→五合目 (5/3起可订)</label>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="chk4" onchange="toggleDone(this)">
+      <label for="chk4"><strong>景点门票</strong> — 晴空塔 / SHIBUYA SKY / 水族馆 / MOA美术馆</label>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="chk5" onchange="toggleDone(this)">
+      <label for="chk5"><strong>餐厅预约</strong> — 鉢の木 / 初魚 (出发前2周)</label>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="chk6" onchange="toggleDone(this)">
+      <label for="chk6"><strong>NEX特快车票</strong> — 成田↔东京往返（可选）</label>
+    </div>
+  </div>
+
+  <!-- ============ Section 1: 交通预订 ============ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#e3f2fd">🚌</div>
+      <h2>交通预订（最重要！）</h2>
+      <span class="section-desc">巴士座位有限，务必提前抢</span>
+    </div>
+
+    <!-- Card 1: 新宿→河口湖 -->
+    <div class="card priority-high">
+      <div class="card-top">
+        <div class="card-title">🚌 新宿 → 河口湖 高速巴士 <span class="day-tag">D5 · 6/3(三)</span></div>
+        <span class="urgency now">5/3起可订</span>
+      </div>
+      <div class="card-meta">
+        <span>🕐 出发时间：约08:00-09:00</span>
+        <span>💰 票价：约¥180（2,400円）</span>
+        <span>⏱ 车程：约1小时50分</span>
+      </div>
+      <div class="card-note">
+        <strong>⚠️ 最重要！</strong>座位数有限（尤其周末/假日），建议<strong>5月3日开售当天</strong>就抢票。新宿高速巴士总站（新宿駅西口）出发。4岁儿童通常<strong>免费</strong>（坐在大人膝上）或购买儿童票（半价），具体看运营公司规定。
+      </div>
+      <div class="card-links">
+        <a href="https://highway-buses.jp/chs/course/shinjuku.php" target="_blank" class="link-btn official">🌐 Highway-buses官网</a>
+        <a href="https://bus.fujikyu.co.jp/" target="_blank" class="link-btn official">🌐 富士急巴士</a>
+        <a href="https://www.klook.com/zh-CN/search/result/?keyword=新宿%20河口湖%20巴士" target="_blank" class="link-btn third-party">🎫 Klook</a>
+      </div>
+    </div>
+
+    <!-- Card 2: 河口湖→五合目 -->
+    <div class="card priority-high">
+      <div class="card-top">
+        <div class="card-title">🚌 河口湖 → 富士山五合目 富士急巴士 <span class="day-tag">D5 · 6/3(三)</span></div>
+        <span class="urgency now">5/3起可订</span>
+      </div>
+      <div class="card-meta">
+        <span>🕐 出发时间：约10:00</span>
+        <span>💰 票价：约¥80（1,100円）单程</span>
+        <span>⏱ 车程：约50分钟</span>
+      </div>
+      <div class="card-note">
+        <strong>⚠️ 配合高速巴士时间</strong>：约09:50到达河口湖站，出站后步行5分钟到巴士站，10:00左右有班次。富士急巴士座位较少，建议<strong>提前在网上预约</strong>。冬季（11-4月）可能有减班，6月正常运营。
+      </div>
+      <div class="card-links">
+        <a href="https://bus.fujikyu.co.jp/" target="_blank" class="link-btn official">🌐 富士急巴士预约</a>
+        <a href="https://www.fujikyu-travel.co.jp/free5/bus.html" target="_blank" class="link-btn official">🌐 富士急旅行</a>
+      </div>
+    </div>
+
+    <!-- Card 3: NEX -->
+    <div class="card priority-low">
+      <div class="card-top">
+        <div class="card-title">🚆 N'EX 成田特快（成田↔东京往返）<span class="day-tag">D1+D9</span></div>
+        <span class="urgency normal">可选</span>
+      </div>
+      <div class="card-meta">
+        <span>💰 往返特价：¥260（4,000円）</span>
+        <span>⏱ 车程：约55分钟</span>
+        <span>👶 儿童票：半价</span>
+      </div>
+      <div class="card-note">
+        <strong>可买可不买：</strong>NEX往返特价票（N'EX Round Trip Discount）需在成田机场1楼JR东日本旅行服务中心（View Plaza）持护照购买，仅限外国人。当天买也可以，但建议到机场后第一时间去买。也可以用Suica/Pasmo直接刷卡进站（无折扣）。
+      </div>
+      <div class="card-links">
+        <a href="https://www.jreast.co.jp/sc/eastpass_p/nex_round.html" target="_blank" class="link-btn official">🌐 JR东日本官网</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Section 2: 景点门票 ============ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fce4ec">🎫</div>
+      <h2>景点门票预订</h2>
+      <span class="section-desc">热门景点提前买省排队</span>
+    </div>
+
+    <!-- 晴空塔 -->
+    <div class="card priority-mid">
+      <div class="card-top">
+        <div class="card-title">🗼 东京晴空塔展望台 <span class="day-tag">D2 · 5/31(日)</span></div>
+        <span class="urgency soon">出发前2周</span>
+      </div>
+      <div class="card-meta">
+        <span>🎫 成人：¥145（2,100円）</span>
+        <span>👶 儿童票：约¥70（1,000円，4-5岁）</span>
+        <span>🕐 建议上午时段</span>
+      </div>
+      <div class="card-note">
+        周日白天人流较大，建议提前在线购票选择入场时段，避免现场排队。<strong>展望台350m需另购升级票</strong>（+¥65/1,030円），看个人需求。
+      </div>
+      <div class="card-links">
+        <a href="https://www.tokyo-skytree.jp/cn_s/ticket/individual/" target="_blank" class="link-btn official">🌐 晴空塔官网</a>
+        <a href="https://www.klook.com/zh-CN/search/result/?keyword=晴空塔" target="_blank" class="link-btn third-party">🎫 Klook</a>
+      </div>
+    </div>
+
+    <!-- SHIBUYA SKY -->
+    <div class="card priority-mid">
+      <div class="card-top">
+        <div class="card-title">🌆 SHIBUYA SKY 展望台 <span class="day-tag">D3 · 6/1(一)</span></div>
+        <span class="urgency soon">出发前2周</span>
+      </div>
+      <div class="card-meta">
+        <span>🎫 成人：¥130（2,000円）</span>
+        <span>👶 儿童票：约¥65（1,000円，4-11岁）</span>
+        <span>🕐 建议日落时段（17:00-18:30）</span>
+      </div>
+      <div class="card-note">
+        <strong>有人数管控</strong>，周末和节假日经常售罄。建议提前在官网或Klook购票并指定入场时段。周一相对不那么拥挤，但保险起见还是提前买。
+      </div>
+      <div class="card-links">
+        <a href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" class="link-btn official">🌐 SHIBUYA SKY官网</a>
+        <a href="https://www.klook.com/zh-CN/search/result/?keyword=SHIBUYA%20SKY" target="_blank" class="link-btn third-party">🎫 Klook</a>
+      </div>
+    </div>
+
+    <!-- 新江之岛水族馆 -->
+    <div class="card priority-low">
+      <div class="card-top">
+        <div class="card-title">🐠 新江之岛水族馆 <span class="day-tag">D4 · 6/2(二)</span></div>
+        <span class="urgency normal">出发前1周</span>
+      </div>
+      <div class="card-meta">
+        <span>🎫 成人：¥160（2,600円）</span>
+        <span>👶 儿童票：约¥50（700円，4-7岁）</span>
+        <span>🕐 当天入场即可</span>
+      </div>
+      <div class="card-note">
+        当天售票处也可以买票，但<strong>Klook/KKday有折扣票</strong>（成人约¥130），提前买省¥30。水族馆非常适合带小朋友，建议预留2-3小时。
+      </div>
+      <div class="card-links">
+        <a href="https://www.enosui.com/cn/" target="_blank" class="link-btn official">🌐 水族馆官网</a>
+        <a href="https://www.klook.com/zh-CN/search/result/?keyword=江之岛水族馆" target="_blank" class="link-btn third-party">🎫 Klook折扣票</a>
+      </div>
+    </div>
+
+    <!-- MOA美术馆 -->
+    <div class="card priority-low">
+      <div class="card-top">
+        <div class="card-title">🎨 MOA美术馆 <span class="day-tag">D6 · 6/4(四)</span></div>
+        <span class="urgency normal">出发前1周</span>
+      </div>
+      <div class="card-meta">
+        <span>🎫 成人：¥100（1,600円）</span>
+        <span>👶 儿童票：免费（初中生以下）</span>
+        <span>🕐 当天入场即可</span>
+      </div>
+      <div class="card-note">
+        <strong>提前在线购买有折扣</strong>（成人¥90/1,400円）。官网和Klook都可以买。初中生以下免费！美术馆有东洋陶瓷收藏和庭院，值得一看。
+      </div>
+      <div class="card-links">
+        <a href="https://www.moaart.or.jp/zh-CN/guide/" target="_blank" class="link-btn official">🌐 MOA官网</a>
+        <a href="https://www.klook.com/zh-CN/search/result/?keyword=MOA美术馆" target="_blank" class="link-btn third-party">🎫 Klook折扣票</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Section 3: 餐厅预约 ============ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fff3e0">🍣</div>
+      <h2>餐厅预约</h2>
+      <span class="section-desc">部分餐厅需提前预约</span>
+    </div>
+
+    <!-- 三定天妇罗 -->
+    <div class="card priority-low">
+      <div class="card-top">
+        <div class="card-title">🍤 三定 天妇罗（浅草）<span class="day-tag">D2 · 5/31(日)</span></div>
+        <span class="urgency normal">排队制</span>
+      </div>
+      <div class="card-meta">
+        <span>📍 浅草寺附近</span>
+        <span>💰 午餐套餐：¥60-130/份</span>
+        <span>⏰ 营业：11:00-20:00</span>
+      </div>
+      <div class="card-note">
+        <strong>不接受预约，排队制。</strong>建议<strong>11:00开店前到店排队</strong>（10:45到），等位约20-40分钟。周日排队时间可能更长，是当天最早的景点，正好先吃午餐再逛浅草寺。<br>
+        <strong>备选：</strong>大黑家天妇罗（也排队）、浅草今半（可预约，寿喜烧）
+      </div>
+    </div>
+
+    <!-- 鉢の木 -->
+    <div class="card priority-high">
+      <div class="card-top">
+        <div class="card-title">🍃 鉢の木 精进料理（镰仓）<span class="day-tag">D4 · 6/2(二)</span></div>
+        <span class="urgency soon">需预约</span>
+      </div>
+      <div class="card-meta">
+        <span>📍 圆觉寺内</span>
+        <span>💰 套餐：¥100-200/人</span>
+        <span>⏰ 仅限午间（11:00-14:00）</span>
+      </div>
+      <div class="card-note">
+        <strong>⚠️ 强烈建议预约！</strong>鉢の木位于圆觉寺内的方丈庭园，是镰仓名物精进料理（素斋）。不接受临时到店，<strong>需至少提前2周</strong>通过官网或电话预约。<br>
+        <strong>预约方式：</strong><br>
+        ① 官网在线预约（有英文表单）<br>
+        ② 电话：+81-467-22-1036（圆觉寺）<br>
+        ③ 代订平台：Omakase / TableCheck<br>
+        <strong>备选：</strong>鎌倉パスタ（无需预约，步行5分钟）
+      </div>
+      <div class="card-links">
+        <a href="https://www.engakuji.or.jp/" target="_blank" class="link-btn official">🌐 圆觉寺官网</a>
+        <a href="tel:+81467221036" class="link-btn phone">📞 +81-467-22-1036</a>
+      </div>
+    </div>
+
+    <!-- 初魚 -->
+    <div class="card priority-high">
+      <div class="card-top">
+        <div class="card-title">🐟 初魚 はつうお 怀石料理（热海）<span class="day-tag">D7 · 6/5(五)</span></div>
+        <span class="urgency soon">需预约</span>
+      </div>
+      <div class="card-meta">
+        <span>📍 热海温泉街</span>
+        <span>💰 晚餐怀石：¥200-500/人</span>
+        <span>⏰ 晚间限定</span>
+      </div>
+      <div class="card-note">
+        <strong>⚠️ 强烈建议预约！</strong>初魚はつうお是热海知名怀石料理老店，食材讲究、口碑极佳。不接受临时到店，<strong>需至少提前2周</strong>预约。<br>
+        <strong>预约方式：</strong><br>
+        ① 电话直接预约（日语，可请酒店前台代拨）<br>
+        ② 通过入住酒店（Resorpia）前台代订<br>
+        ③ 代订平台：Omakase / 一休<br>
+        <strong>备选：</strong>あいかわ食堂（无需预约，当地人气食堂）、海鲜丼 たいめいけん
+      </div>
+      <div class="card-links">
+        <a href="https://www.omakase.in/" target="_blank" class="link-btn third-party">🌐 Omakase代订</a>
+        <a href="https://www.tablecheck.com/shops/iat-tachimi/reserve" target="_blank" class="link-btn third-party">🌐 TableCheck</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Section 4: 酒店付款 ============ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#f3e5f5">🏨</div>
+      <h2>酒店付款提醒</h2>
+      <span class="section-desc">注意付款截止日期！</span>
+    </div>
+
+    <div class="warning-box">
+      <div class="warn-icon">⚠️</div>
+      <div class="warn-text">
+        <strong>两笔酒店待付款，请务必在截止日期前完成！</strong><br>
+        ① <strong>热海Resorpia酒店</strong>（D5-D8）：⚠️ <strong>5月29日</strong>前付款（Agoda订单 #1990408869）<br>
+        ② <strong>东横INN成田</strong>（D8）：⚠️ <strong>6月5日 11:00</strong>前付款（Halalbooking订单 #6078940）
+      </div>
+    </div>
+
+    <div class="card priority-mid">
+      <div class="card-top">
+        <div class="card-title">🏨 热海Resorpia酒店 <span class="day-tag">D5-D8 · 6/3-6/6</span></div>
+        <span class="urgency now">5/29截止</span>
+      </div>
+      <div class="card-meta">
+        <span>📦 Agoda订单：#1990408869</span>
+        <span>💰 4晚</span>
+        <span>⏰ 付款截止：5月29日</span>
+      </div>
+      <div class="card-note">
+        Resorpia是热海温泉度假酒店，设施完善，有温泉大浴场和儿童浴衣。付款截止日正好是出发前一天，<strong>千万别忘了！</strong>
+      </div>
+      <div class="card-links">
+        <a href="https://www.agoda.com" target="_blank" class="link-btn official">🌐 Agoda</a>
+      </div>
+    </div>
+
+    <div class="card priority-mid">
+      <div class="card-top">
+        <div class="card-title">🏨 东横INN成田 <span class="day-tag">D8 · 6/6(六)</span></div>
+        <span class="urgency soon">6/5截止</span>
+      </div>
+      <div class="card-meta">
+        <span>📦 Halalbooking订单：#6078940</span>
+        <span>💰 1晚</span>
+        <span>⏰ 付款截止：6月5日 11:00</span>
+      </div>
+      <div class="card-note">
+        成田机场附近的经济型酒店，方便第二天赶飞机。付款截止是出发前一天，行程当天也要记着付款！
+      </div>
+      <div class="card-links">
+        <a href="https://halalbooking.com" target="_blank" class="link-btn official">🌐 Halalbooking</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Section 5: 无需预订 ============ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#e8f5e9">✅</div>
+      <h2>无需预订</h2>
+      <span class="section-desc">直接到店 / 现场购票即可</span>
+    </div>
+
+    <div class="info-box">
+      <div class="info-icon">ℹ️</div>
+      <div class="info-text">
+        以下景点和餐厅<strong>无需提前预订</strong>，直接到店或现场购票即可。部分景点在Klook有折扣票，如果想省钱也可以提前买。
+      </div>
+    </div>
+
+    <div class="no-bookmark-grid">
+      <div class="no-bookmark-item"><span class="icon">⛩️</span> 浅草寺（免费）</div>
+      <div class="no-bookmark-item"><span class="icon">🏮</span> 仲见世商业街（免费）</div>
+      <div class="no-bookmark-item"><span class="icon">🎮</span> 秋叶原电器街（免费）</div>
+      <div class="no-bookmark-item"><span class="icon">🌳</span> 新宿御苑（500円现场买）</div>
+      <div class="no-bookmark-item"><span class="icon">🗼</span> 东京都厅展望台（免费）</div>
+      <div class="no-bookmark-item"><span class="icon">🚦</span> 涩谷十字路口（免费）</div>
+      <div class="no-bookmark-item"><span class="icon">🗼</span> 东京塔 Main Deck（当天买）</div>
+      <div class="no-bookmark-item"><span class="icon">🏯</span> 热海城（800円现场买）</div>
+      <div class="no-bookmark-item"><span class="icon">🏞️</span> 修善寺竹林（免费）</div>
+      <div class="no-bookmark-item"><span class="icon">💧</span> 净莲瀑布（免费）</div>
+      <div class="no-bookmark-item"><span class="icon">⛩️</span> 镰仓大佛（300円现场买）</div>
+      <div class="no-bookmark-item"><span class="icon">⛩️</span> 圆觉寺（500円现场买）</div>
+      <div class="no-bookmark-item"><span class="icon">🏝️</span> 江之岛（免费散步）</div>
+      <div class="no-bookmark-item"><span class="icon">🍲</span> 藏寿司（连锁，直接到店）</div>
+      <div class="no-bookmark-item"><span class="icon">🍖</span> 焼肉ライク（连锁，直接到店）</div>
+      <div class="no-bookmark-item"><span class="icon">🍜</span> 丸亀製麵（连锁，直接到店）</div>
+      <div class="no-bookmark-item"><span class="icon">🍣</span> 元祖寿司（连锁，直接到店）</div>
+      <div class="no-bookmark-item"><span class="icon">🍦</span> 各地甜品店（直接到店）</div>
+    </div>
+  </div>
+
+  <!-- ============ Section 6: 时间线 ============ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#e0f7fa">📅</div>
+      <h2>建议预订时间线</h2>
+      <span class="section-desc">按优先级排列</span>
+    </div>
+
+    <div class="card" style="border-left-color: var(--dark);">
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="timeline-row">
+          <div class="timeline-when" style="color:var(--red);font-weight:600;">🔴 今天<br><small>4月1日</small></div>
+          <div><strong>酒店付款日历提醒</strong>：在手机日历添加两条提醒 —— <br>① 5月28日提醒付款Resorpia &nbsp; ② 6月4日提醒付款东横INN成田</div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-when" style="color:var(--orange);font-weight:600;">🟠 5月3日<br><small>提前1个月</small></div>
+          <div><strong>抢订巴士票！</strong>新宿→河口湖高速巴士 + 河口湖→五合目富士急巴士<br><small>这是全程最难订的项目，开售当天就订！</small></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-when" style="color:var(--blue);font-weight:600;">🔵 5月16日<br><small>提前2周</small></div>
+          <div><strong>景点门票</strong>：晴空塔 + SHIBUYA SKY<br><strong>餐厅预约</strong>：鉢の木（圆觉寺）+ 初魚はつうお（热海怀石）<br><small>景点可在Klook买折扣票；餐厅建议电话或代订平台预约</small></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-when" style="color:var(--green);font-weight:600;">🟢 5月23日<br><small>提前1周</small></div>
+          <div><strong>水族馆 + MOA美术馆</strong>门票（Klook有折扣）<br><strong>确认</strong>富士山五合目6月开放状态（餐厅/商店是否营业）</div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-when" style="color:var(--purple);font-weight:600;">🟣 5月29日<br><small>出发前1天</small></div>
+          <div><strong>⚠️ 付款截止！</strong>热海Resorpia酒店 Agoda订单付款<br><small>别忘了！不付款可能取消订单！</small></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-when" style="color:var(--dark);font-weight:600;">⬛ 5月30日<br><small>出发日！</small></div>
+          <div>🛫 出发！到成田机场后第一时间买NEX往返车票<br>✅ 下载好Google Maps、Suica卡（Apple Pay）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>🇯🇵 日本行程预约清单 · 出发倒计时 59天 · 祝旅途愉快！</p>
+    <p style="margin-top:4px;font-size:12px;">所有链接和价格信息仅供参考，请以官方网站最新信息为准</p>
+  </div>
+
+</div>
+
+<script>
+function toggleDone(el) {
+  const item = el.closest('.checklist-item');
+  if (el.checked) {
+    item.classList.add('done');
+  } else {
+    item.classList.remove('done');
+  }
+  saveChecklist();
+}
+
+function saveChecklist() {
+  const checks = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+  const state = Array.from(checks).map(c => c.checked);
+  localStorage.setItem('japan_booking_checklist', JSON.stringify(state));
+}
+
+function loadChecklist() {
+  const saved = localStorage.getItem('japan_booking_checklist');
+  if (saved) {
+    const state = JSON.parse(saved);
+    const checks = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+    checks.forEach((c, i) => {
+      if (state[i]) {
+        c.checked = true;
+        c.closest('.checklist-item').classList.add('done');
+      }
+    });
+  }
+}
+
+loadChecklist();
+</script>
+
 </body>
 </html>
