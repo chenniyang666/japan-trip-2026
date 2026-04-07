@@ -424,7 +424,28 @@
     .day-header .day-hotel { margin-left: 0; text-align: left; }
     .item-images { flex-direction: column; }
   }
-</style>
+
+  /* 左右布局修复 */
+  .tl-content {
+    overflow: hidden;
+  }
+  .tl-content .item-images {
+    float: right;
+    margin-left: 16px;
+    margin-bottom: 12px;
+    width: 200px;
+    flex-shrink: 0;
+  }
+  @media (max-width: 600px) {
+    .tl-content .item-images {
+      float: none;
+      width: 100%;
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  }
+
+  </style>
 </head>
 <body>
 
