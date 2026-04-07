@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本行程预约清单</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+        }
+        .section-title::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 16px;
+            background: #3498db;
+            margin-right: 8px;
+            border-radius: 2px;
+        }
+        .item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+        }
+        .item-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .item-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        .item-meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        .item-details {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+        .priority-high {
+            border-left-color: #e74c3c;
+        }
+        .priority-medium {
+            border-left-color: #f39c12;
+        }
+        .priority-low {
+            border-left-color: #27ae60;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+        .tag-important {
+            background: #ffeaa7;
+            color: #d35400;
+        }
+        .tag-suggested {
+            background: #a29bfe;
+            color: white;
+        }
+        .tag-optional {
+            background: #55efc4;
+            color: #00b894;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #3498db;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -9px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #3498db;
+        }
+        .timeline-date {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .timeline-content {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        .emoji {
+            font-size: 18px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🇯🇵 日本行程预约清单</h1>
+        <div class="subtitle">
+            2026年5月30日 (六) — 6月7日 (日) · 9天8晚<br>
+            📅 生成日期：2026年4月1日 · 出发倒计时 59天
+        </div>
+
+        <div class="section">
+            <div class="section-title">✅ 预订进度追踪（可勾选）</div>
+            <div class="item">
+                <div class="item-details">
+                    <strong>酒店付款</strong> — 热海Resorpia (5/29前) + 东横INN成田 (6/5前)<br>
+                    <strong>高速巴士</strong> — 新宿→河口湖 (5/3起可订)<br>
+                    <strong>富士急巴士</strong> — 河口湖→五合目 (5/3起可订)<br>
+                    <strong>景点门票</strong> — 晴空塔 / SHIBUYA SKY / 水族馆 / MOA美术馆<br>
+                    <strong>餐厅预约</strong> — 鉢の木 / 初魚 (出发前2周)<br>
+                    <strong>NEX特快车票</strong> — 成田↔东京往返（可选）<br>
+                    🚌
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">🚌 交通预订（最重要！）</div>
+            <div class="item priority-high">
+                <div class="item-header">
+                    <div class="item-title">🚌 新宿 → 河口湖 高速巴士 D5 · 6/3(三)</div>
+                    <span class="tag tag-important">5/3起可订</span>
+                </div>
+                <div class="item-details">
+                    🕐 出发时间：约08:00-09:00 💰 票价：约¥180（2,400円） ⏱ 车程：约1小时50分<br>
+                    ⚠️ 最重要！座位数有限（尤其周末/假日），建议5月3日开售当天就抢票。新宿高速巴士总站（新宿駅西口）出发。4岁儿童通常免费（坐在大人膝上）或购买儿童票（半价），具体看运营公司规定。<br>
+                    🌐 Highway-buses官网 🌐 富士急巴士 🎫 Klook
+                </div>
+            </div>
+
+            <div class="item priority-high">
+                <div class="item-header">
+                    <div class="item-title">🚌 河口湖 → 富士山五合目 富士急巴士 D5 · 6/3(三)</div>
+                    <span class="tag tag-important">5/3起可订</span>
+                </div>
+                <div class="item-details">
+                    🕐 出发时间：约10:00 💰 票价：约¥80（1,100円）单程 ⏱ 车程：约50分钟<br>
+                    ⚠️ 配合高速巴士时间：约09:50到达河口湖站，出站后步行5分钟到巴士站，10:00左右有班次。富士急巴士座位较少，建议提前在网上预约。冬季（11-4月）可能有减班，6月正常运营。<br>
+                    🌐 富士急巴士预约 🌐 富士急旅行
+                </div>
+            </div>
+
+            <div class="item priority-low">
+                <div class="item-header">
+                    <div class="item-title">🚆 N'EX 成田特快（成田↔东京往返）D1+D9</div>
+                    <span class="tag tag-optional">可选</span>
+                </div>
+                <div class="item-details">
+                    💰 往返特价：¥260（4,000円） ⏱ 车程：约55分钟 👶 儿童票：半价<br>
+                    可买可不买：NEX往返特价票（N'EX Round Trip Discount）需在成田机场1楼JR东日本旅行服务中心（View Plaza）持护照购买，仅限外国人。当天买也可以，但建议到机场后第一时间去买。也可以用Suica/Pasmo直接刷卡进站（无折扣）。<br>
+                    🌐 JR东日本官网
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">🎫 景点门票预订</div>
+            <!-- 景点门票内容 -->
+        </div>
+
+        <div class="section">
+            <div class="section-title">🍣 餐厅预约</div>
+            <!-- 餐厅预约内容 -->
+        </div>
+
+        <div class="section">
+            <div class="section-title">🏨 酒店付款提醒</div>
+            <!-- 酒店付款内容 -->
+        </div>
+
+        <div class="section">
+            <div class="section-title">✅ 无需预订</div>
+            <!-- 无需预订内容 -->
+        </div>
+
+        <div class="section">
+            <div class="section-title">📅 建议预订时间线</div>
+            <!-- 时间线内容 -->
+        </div>
+
+        <div class="section">
+            <div class="item">
+                <div class="item-details" style="text-align: center; color: #7f8c8d; font-size: 12px;">
+                    🇯🇵 日本行程预约清单 · 出发倒计时 59天 · 祝旅途愉快！<br>
+                    所有链接和价格信息仅供参考，请以官方网站最新信息为准
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

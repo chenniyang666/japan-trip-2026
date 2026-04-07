@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "sessions": {
+    "6f2cc3d5a28548fa84eaec56d4e7fa5b": [
+      {
+        "expertId": "GodotMultiplayerEngineer",
+        "name": "Faith",
+        "profession": "Godot多人联机工程师",
+        "avatarUrl": "https://acc-1258344699.cos.accelerate.myqcloud.com/workbuddy/experts/avatars/12-GameDevelopment/GodotMultiplayerEngineer/GodotMultiplayerEngineer.png",
+        "promptUrl": "https://acc-1258344699.cos.accelerate.myqcloud.com/workbuddy/experts/experts/12-GameDevelopment/GodotMultiplayerEngineer/GodotMultiplayerEngineer_zh.md",
+        "usedAt": 1775526169254,
+        "industryId": "all"
+      }
+    ],
+    "6c481c362c194864a1282ba9d93cbb70": [
+      {
+        "expertId": "GodotMultiplayerEngineer",
+        "name": "Faith",
+        "profession": "Godot多人联机工程师",
+        "avatarUrl": "https://acc-1258344699.cos.accelerate.myqcloud.com/workbuddy/experts/avatars/12-GameDevelopment/GodotMultiplayerEngineer/GodotMultiplayerEngineer.png",
+        "promptUrl": "https://acc-1258344699.cos.accelerate.myqcloud.com/workbuddy/experts/experts/12-GameDevelopment/GodotMultiplayerEngineer/GodotMultiplayerEngineer_zh.md",
+        "usedAt": 1775526205927,
+        "industryId": "all"
+      }
+    ]
+  },
+  "lastUpdated": 1775527443526
+}
