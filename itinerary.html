@@ -275,6 +275,13 @@
     flex: 1;
     padding: 12px 0 12px 12px;
     border-bottom: 1px solid #f5f5f5;
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .tl-text {
+    flex: 1;
+    min-width: 0;
   }
   .tl-item:last-child .tl-content { border-bottom: none; }
   .tl-item:last-child .tl-line { display: none; }
@@ -347,28 +354,22 @@
 
   /* ===== ITEM IMAGES (inside tl-content) ===== */
   .item-images {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-    float: right;
-    margin-left: 16px;
-    margin-bottom: 12px;
-    width: 200px;
-    clear: both;
+    flex-shrink: 0;
+    width: 220px;
+    margin-left: 14px;
+    align-self: flex-start;
   }
   .item-images .item-img {
-    flex: 1;
-    min-width: 0;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.13);
     aspect-ratio: 16 / 9;
-    background: #f0f0f0;
+    background: #eee;
   }
   .item-images .item-img img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
   }
 
@@ -430,20 +431,12 @@
     .item-images { flex-direction: column; }
   }
 
-  /* 左右布局修复 */
-  .tl-content {
-    overflow: hidden;
-  }
-  .tl-content .item-images {
-    float: right;
-    margin-left: 16px;
-    margin-bottom: 12px;
-    width: 200px;
-    flex-shrink: 0;
-  }
+  /* 响应式：小屏图片在文字下方 */
   @media (max-width: 600px) {
-    .tl-content .item-images {
-      float: none;
+    .tl-content {
+      flex-direction: column;
+    }
+    .item-images {
       width: 100%;
       margin-left: 0;
       margin-top: 10px;
@@ -610,7 +603,7 @@
       <div class="tl-item">
         <div class="tl-left">08:00</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🌅 起床出发，前往上海浦东机场<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">
             建议至少 <span class="highlight">提前3小时</span>（10:00前）抵达浦东机场T2，办理值机、托运行李。<br>
@@ -619,25 +612,27 @@
             🕐 抵达：16:55 成田机场T1（飞行约3小时）
           </div>
           <div class="alert-box">⚠️ 付款提醒：<strong>今日最晚需在 5月29日前</strong> 完成热海Resorpia酒店付款！出发前请确认已付！</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">11:00</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍜 机场午餐<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             浦东机场T2出发大厅用餐。建议简单吃，不宜过饱。<br>
             推荐：机场内的<strong>Din Tai Fung（鼎泰丰）</strong>或<strong>一品锅</strong>。
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">13:00</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">✈️ NH920 起飞<span class="type-badge type-transport">飞行</span></div>
           <div class="tl-desc">
             全日空为日本国航，服务优质。机上提供午餐，可欣赏富士山云景（晴天时从右侧窗可见）。<br>
@@ -649,13 +644,14 @@
               <li>酒店预订确认单</li>
             </ul>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">16:55</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🛬 抵达成田机场T1，过境/取行李<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">
             入境流程约需 45–90 分钟（视排队）：<br>
@@ -668,26 +664,28 @@
             </ul>
           </div>
           <div class="info-box">💡 建议在机场购买"成田机场站→东横INN"附近站的IC卡，全程刷卡出行。</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">18:30</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚌 前往东横INN成田机场本馆<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">
             <strong>方式：免费接驳巴士</strong>（东横INN提供机场接送服务）<br>
             🕐 酒店方提示：请提前联系酒店告知到达时间（电话：+81-476-330451）<br>
             步行或接驳约10–15分钟抵达酒店。
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">19:00</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🏨 入住 东横INN成田机场本馆<span class="type-badge type-hotel">入住</span></div>
           <div class="tl-desc">
             📍 地址：560 Tokko, Narita, Chiba, 286-0106<br>
@@ -696,26 +694,28 @@
             Check-in 15:00后，Check-out 10:00前。
           </div>
           <div class="alert-box">⚠️ 重要：此酒店为 <strong>待付款</strong>！已在 Halalbooking 确认预订，请务必确认已于 5月29日11:00（日本时间）前完成支付，否则预订将自动取消！</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">19:30</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍣 晚餐 · 成田市街<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             酒店步行15分钟可达成田山新胜寺参道附近餐馆（若时间允许），或在酒店附近的便利店（7-11/全家）解决。<br>
             <strong>推荐：成田山参道的「川豊」鳗鱼饭</strong>（三代老铺，鳗鱼来自印尼，当场现烤，特色：超大鳗鱼铺满饭盒，约¥87–¥130（2,000–3,000日元）/份）。若抵达较晚，建议便利店或711热食。
           </div>
           
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">12:30</div>
         <div class="tl-line-area"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">💤 午睡时段（机内）<span class="type-badge type-tips">👶 午休</span></div>
           <div class="nap-box">
             <div class="nap-title">💤 D1午睡：飞机上休息</div>
@@ -723,20 +723,22 @@
             <div class="nap-detail">起飞后不久孩子自然会在机上入睡。全日空提供毛毯和靠枕，飞机餐后就适合午睡。</div>
             <div class="nap-tip">💡 D1是抵达日，无需专门安排午睡地点。16:55落地后直接入住酒店休息。</div>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">21:30</div>
         <div class="tl-line-area"><div class="tl-dot gray"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">😴 早休息，备战明日东京<span class="type-badge type-tips">提示</span></div>
           <div class="tl-desc">
             明天行程较满，建议早睡。<br>
             🎒 整理行李：<strong>明早需寄存1个大件行李</strong>（东横INN→东京锦系町），可使用<strong>ヤマト宅急便（黑猫运输）</strong>，前台办理托运，翌日送达东京酒店，费用约¥65–¥87（1,500–2,000日元）/件。
           </div>
           <div class="luggage-box">🧳 行李策略：带走轻便背包（当日必需品），大箱子办理「宅急便」寄至相铁FRESA INN东京锦系町（5月31日）。前台可协助办理，填写目标酒店地址即可。</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
     </div>
@@ -761,29 +763,31 @@
       <div class="tl-item">
         <div class="tl-left">07:00</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍳 酒店早餐（含早餐）<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             东横INN免费早餐：日式和式自助，有白米饭、味噌汤、煮鸡蛋、小菜等，营养均衡，适合早起补充体力。<br>
             早餐供应时间：07:00–09:00，<strong>建议尽早用餐</strong>。
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">09:00</div>
         <div class="tl-line-area"><div class="tl-dot gray"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🧳 办理宅急便寄行李 + 退房<span class="type-badge type-tips">提示</span></div>
           <div class="tl-desc">退房前，前往前台办理大行李「黑猫宅急便」寄送到锦系町酒店，自己只带日常背包出发去东京。</div>
           <div class="luggage-box">🧳 行李寄送：填写目标酒店：相铁FRESA INN东京锦系町，2 Chome-18-7，墨田区，东京。预计次日（或当日晚）送达，费用约¥65–¥87（1,500–2,000円）/件。</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">09:30</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚆 成田机场→浅草 乘车<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">
             从成田机场出发前往浅草：<br>
@@ -791,13 +795,14 @@
             或乘坐 <strong>成田特快NEX</strong>（约60分钟，约¥130（3,000円），但不直达浅草）。<br>
             👉 建议用 <strong>IC卡乘京成线</strong>，在<strong>京成浅草线押上站</strong>下车后步行至浅草寺（5分钟）。
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">11:00</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">⛩️ 浅草寺 + 仲见世商业街<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             📍 地址：台东区浅草2-3-1<br>
@@ -810,30 +815,30 @@
               <li><strong>五重塔</strong>：登高俯瞰浅草全景</li>
             </ul>
             🛍️ 购物推荐：仲见世的「金龙山」人形烧（红豆/奶油馅，排队名物）、「诹访屋」的雷おこし（米花糖）
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=480&h=540&fit=crop" alt="浅草寺雷门"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1570459027562-4a916cc6113f?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1570459027562-4a916cc6113f?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">13:00</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍜 午餐 · 浅草「三定」天妇罗饭<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             📍 推荐：<strong>三定天妇罗（浅草创业1837年老店）</strong>，地址：浅草1-2-2<br>
             🌟 特色：超高性价比天妇罗套餐（虾天妇罗·穴子·鱼），约¥65–¥130（1,500–3,000日元）/人<br>
             点什么：招牌「天ぷら定食」，包含白饭、味噌汤、腌渍小菜<br>
             备选：「大黑家」天妇罗（排队约30分钟）/ 浅草附近的「牛かつもと村」牛排炸（超嫩）
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=480&h=540&fit=crop" alt="天妇罗料理"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1570459027562-4a916cc6113f?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1570459027562-4a916cc6113f?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">14:00</div>
         <div class="tl-line-area"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">💤 午睡时间 · 晴空塔Solamachi商场<span class="type-badge type-tips">👶 午休</span></div>
           <div class="nap-box">
             <div class="nap-title">💤 D2午睡：晴空塔Solamachi休息区</div>
@@ -847,22 +852,24 @@
             </div>
             <div class="nap-tip">💡 建议提前在Solamachi买好零食饮料，午睡期间大人可以逛商场或补一杯咖啡。如果孩子实在睡不着，晴空塔下的「东京天空街道」有免费游乐区可消耗体力。</div>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">14:30</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚆 浅草→秋叶原（约15分钟）<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">乘坐银座线/步行 → 秋叶原站，徒步约20分钟或地铁2站</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">14:45</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🎮 秋叶原电器街 + 动漫圣地<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             📍 地址：千代田区外神田（秋叶原站周边）<br>
@@ -875,15 +882,15 @@
               <li><strong>Radio Kaikan</strong>：8层动漫手办模型专卖</li>
             </ul>
             👶 带孩子玩亮点：Gachapon扭蛋（约¥4–¥22（100–500円）/次），超多款式，孩子超爱！
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=480&h=540&fit=crop" alt="秋叶原电器街"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1542042457485-c88f56e01419?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1542042457485-c88f56e01419?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">17:00</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚆 秋叶原→锦系町入住酒店（约10分钟）<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">
             乘坐JR总武线：秋叶原→锦系町（2站，约8分钟，IC卡165円）<br>
@@ -891,13 +898,14 @@
             Check-in 15:00后，房型：高级双床房（禁烟），17–20㎡
           </div>
           <div class="info-box">💡 酒店特色：位于锦系町，距浅草、晴空塔步行15分钟，是探索东京下町的绝佳位置。早餐需额外付费（约¥65（JPY 1500）/人）。</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">17:30</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🌆 晴空塔（东京スカイツリー）夜景<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             📍 距离锦系町酒店步行约10–15分钟<br>
@@ -905,15 +913,15 @@
             🌟 特色：高634米，世界第二高自立式电波塔，展望台350米/450米<br>
             🎟️ 门票：350米展望台约¥78（1,800円），450米另加约¥43（1,000円）<br>
             推荐：<strong>「天望甲板」（350m）</strong>即可看全东京夜景，性价比高！脚下玻璃地板超刺激！
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=480&h=540&fit=crop" alt="晴空塔全景"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">19:30</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍱 晚餐 · 晴空塔商场Solamachi<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             晴空塔下的 <strong>Tokyo Solamachi</strong> 购物中心，汇聚50余家餐厅：<br>
@@ -924,7 +932,8 @@
               <li>孩子推荐：<strong>「鹿鸣春」</strong>港式茶餐厅（适合全家）</li>
             </ul>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
     </div>
@@ -949,19 +958,20 @@
       <div class="tl-item">
         <div class="tl-left">08:00</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">☕ 酒店楼下或附近便利店早餐<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             锦系町附近全家/7-11/罗森，日本便利店早餐文化：<br>
             推荐：<strong>罗森饭团（おにぎり）+ 热拿铁</strong>，或 <strong>7-11关东煮+热面</strong>，约¥13–¥22（300–500円）/人，性价比极高！
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">09:00</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🌿 新宿御苑（国立公园）<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             📍 乘地铁：锦系町→新宿（约30分钟，JR中央线）<br>
@@ -969,40 +979,42 @@
             🌟 特色：东京最大皇家庭园（58.3公顷），三种园林样式（日式/法式/英式），6月初玫瑰怒放，绿意盎然！<br>
             🎟️ 门票：约¥22（500円）/大人，小学生以下免费<br>
             推荐路线：正门进入 → 法式正式庭园（最上镜）→ 玫瑰园 → 日本庭园 → 御休所（可购买日式甜点）
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=480&h=540&fit=crop" alt="新宿御苑"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">11:30</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🏙️ 新宿商业街 · 伊势丹/小田急<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             新宿东口：<strong>伊势丹百货</strong>（购买化妆品/日本品牌），<strong>Bic Camera</strong>（电子/家电）<br>
             新宿西口：东京都厅展望台（免费！45F，城市全景，带孩子的好选择）
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">12:30</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍣 午餐 · 新宿「つな八」天妇罗 或 回転寿司<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             <strong>推荐①：くら寿司（藏寿司）</strong>：新宿有多家分店，回转寿司，约¥4–¥6（100–150円）/碟，孩子超喜欢！扭蛋机奖励机制特别有趣。<br>
             <strong>推荐②：天ぷらつな八総本店</strong>：创业1924年，天妇罗名店，套餐约¥87–¥173（2,000–4,000円）/人<br>
             <strong>推荐③：一兰拉面新宿店</strong>：独立隔间，浓郁博多豚骨，约¥65（1,500円）
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">13:30</div>
         <div class="tl-line-area"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">💤 午睡时间 · 新宿LUMINE/伊势丹商场<span class="type-badge type-tips">👶 午休</span></div>
           <div class="nap-box">
             <div class="nap-title">💤 D3午睡：新宿大型商场休息区</div>
@@ -1016,13 +1028,14 @@
             </div>
             <div class="nap-tip">💡 午睡期间大人可以逛LUMINE地下食品层（デパ地下），买一些零食和便当留着路上吃。新宿站周边商场密布，选择非常多。</div>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">14:00</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚦 涩谷十字路口 · Scramble Crossing<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             📍 乘地铁：新宿→涩谷（山手线，约7分钟）<br>
@@ -1030,15 +1043,15 @@
             🌟 特色：全球最繁忙路口，每次绿灯约3000人同时穿越！<br>
             最佳拍照位：<strong>星巴克涩谷店二楼</strong>（俯瞰十字路口），或<strong>SHIBUYA SKY</strong>（展望台，要买票但景色绝佳）<br>
             购物：<strong>涩谷109</strong>（日本时尚圣地）、<strong>Tokyu Hands</strong>（创意杂货，适合买伴手礼）
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=480&h=540&fit=crop" alt="涩谷十字路口"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">16:00</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🗼 东京塔（Tokyo Tower）<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             📍 乘地铁：涩谷→神谷町（日比谷线，约10分钟）<br>
@@ -1046,31 +1059,33 @@
             🌟 特色：高333米，1958年建成的东京地标，涂装为红白相间的国际橙色。黄昏时分照明开启，气氛浪漫！<br>
             🎟️ Main Deck（150m）：约¥52（1,200円）大人，约¥30（700円）儿童<br>
             内有One Piece大剧场、HelloKitty Japan等主题店，孩子超爱！
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=480&h=540&fit=crop" alt="东京塔全景"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">18:30</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚆 返回锦系町酒店<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">神谷町→锦系町，日比谷线直达，约20分钟，IC卡约¥9（200円）</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">19:30</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🥩 晚餐 · 锦系町附近「焼肉ライク」或「すき家」<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             <strong>推荐①：焼肉ライク锦系町</strong>：超值一人烤肉，当日点当日肉，约¥65（1,500円）起<br>
             <strong>推荐②：むつごろうや（老铺居酒屋）</strong>：下町风味居酒屋，各种烤串串烧，约¥87（2,000円）/人，有儿童友好座位<br>
             <strong>推荐③：マクドナルド</strong>（孩子累了就吃麦当劳，日本麦当劳味道比国内好！）
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
     </div>
@@ -1095,44 +1110,46 @@
       <div class="tl-item">
         <div class="tl-left">07:00</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">☕ 便利店早餐，早出发！<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">今天是一日外出日，建议7点出发，在锦系町附近便利店打包早饭路上吃。镰仓在东京西南约50公里。</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">07:30</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚆 锦系町→北镰仓 出发（约80分钟）<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">
             路线：锦系町站 → 东京站（JR总武线约20分钟）→ 北镰仓站（JR横须贺线，约55分钟）<br>
             总费用：约¥43（1,000円）/人（IC卡）<br>
             💡 全程JR，建议使用IC卡，无需预订。
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">09:00</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🏯 北镰仓 · 圆觉寺<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             📍 下车即到，步行1分钟<br>
             ⏱️ 游览：1小时<br>
             🌟 特色：镰仓五山之一，1282年北条时宗建立，供奉弁財天（财运女神）。初夏时节有绣球花（紫阳花）盛开，美不胜收！<br>
             🎟️ 门票：约¥22（500円）大人，小学生免费
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=480&h=540&fit=crop" alt="圆觉寺"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1508761369051-16e62565a4cc?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1508761369051-16e62565a4cc?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">10:00</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">⛩️ 鹤冈八幡宫 + 小町通商店街<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             📍 从北镰仓步行约25分钟，或乘JR至镰仓站<br>
@@ -1141,13 +1158,14 @@
             小町通：通往神社的参道，两侧满是镰仓特色小吃摊和杂货店<br>
             🍡 必吃：<strong>镰仓パスタ（镰仓意面）</strong>、烤团子、镰仓バーガー（汉堡）
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">12:00</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍜 午餐 · 镰仓「鉢の木」镰仓精进料理<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             <strong>推荐①：鉢の木</strong>（日式素食精进料理，禅院风格，需预约，约¥130–¥216（3,000–5,000円）/人）<br>
@@ -1155,13 +1173,14 @@
             <strong>推荐③：鎌倉パスタ（雷米帕斯）</strong>：连锁意面，价格实惠，含儿童套餐，约¥52（1,200円）/人<br>
             👶 最适合带小孩：鎌倉パスタ，有儿童椅，多种口味
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1508761369051-16e62565a4cc?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">13:00</div>
         <div class="tl-line-area"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">💤 午睡时间 · 镰仓站前咖啡店 / 江之电车上<span class="type-badge type-tips">👶 午休</span></div>
           <div class="nap-box">
             <div class="nap-title">💤 D4午睡：镰仓当地午休</div>
@@ -1176,25 +1195,27 @@
             </div>
             <div class="nap-tip">💡 镰仓一日游行程较满，建议下午适当放慢节奏。如果孩子午睡时间较长，可以跳过鹤冈八幡宫，直接去大佛。江之电沿线很多海景咖啡馆，是午休好选择。</div>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">13:30</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚋 乘江之电前往高德院（镰仓大佛）<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">
             <strong>江之电</strong>：镰仓最有特色的复古小电车，沿途经过海边，超出片！<br>
             镰仓站→长谷站（约7分钟，300円）
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">14:00</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🗿 镰仓大佛 + 长谷寺<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             📍 步行约10分钟<br>
@@ -1202,51 +1223,53 @@
             🌟 <strong>镰仓大佛</strong>：高11.3米青铜大佛（国宝），可进入腹内参观（20円），感受内部结构奇特！<br>
             🌟 <strong>长谷寺</strong>：与大佛相邻，以高德院11面观音菩萨像著称，初夏绣球花园极美，可俯瞰相模湾蓝色大海。<br>
             🎟️ 大佛：约¥13（300円），长谷寺：约¥17（400円）
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=480&h=540&fit=crop" alt="镰仓大佛"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1508761369051-16e62565a4cc?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1508761369051-16e62565a4cc?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">15:30</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚋 江之电→江之岛站（约20分钟）<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">乘江之电：长谷→片濑江之岛（约20分钟），在江之岛站下车步行至大桥</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">16:00</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🏝️ 江之岛 · 海岸散步<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             ⏱️ 建议：1小时（带孩子不用爬太多）<br>
             🌟 特色：连接陆地的小岛，岛内有神社、洞窟、海景咖啡馆，傍晚可欣赏富士山剪影（晴天时）<br>
             🐠 推荐：新江之岛水族馆（在岛旁）——海豚表演，孩子必爱！（门票约¥108（2,500円）大人/约¥52（1,200円）儿童）<br>
             🍦 必吃：<strong>江之岛の女夫饅頭</strong>（盐味芝麻饼）、<strong>章鱼仙贝</strong>（直径30cm！）
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=480&h=540&fit=crop" alt="江之岛"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">17:30</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚆 返回锦系町（约90分钟）<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">
             小田急线：片濑江之岛→新宿（约70分钟），再转JR到锦系町<br>
             费用：约¥39（900円）/人
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">19:30</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍛 晚餐 · 锦系町「ゐざさ中谷本舗」押寿司 或 附近拉面<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             <strong>推荐：锦系町SUNAMO商业中心</strong>内的各类餐厅：<br>
@@ -1257,7 +1280,8 @@
             </ul>
           </div>
           <div class="luggage-box">🧳 行李提醒：明天（6月3日）需从东京前往富士山，之后直奔热海入住。建议将大行李「宅急便」从锦系町酒店寄至热海Resorpia酒店，轻装游富士山！</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
     </div>
@@ -1282,29 +1306,31 @@
       <div class="tl-item">
         <div class="tl-left">06:30</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">☀️ 早起 · 便利店早餐<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">今天路程最长！早餐在锦系町便利店解决，打包饭团和饮料，准备出发。</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">07:00</div>
         <div class="tl-line-area"><div class="tl-dot gray"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🧳 大行李寄出 + 退房<span class="type-badge type-tips">提示</span></div>
           <div class="tl-desc">
             前台办理：大件行李宅急便寄至热海Resorpia酒店（地址：静冈県热海市熱海山上/Hotel Resorpia Atami），预计当日晚或翌日送达。<br>
             带走：1个轻便背包（今日必需品）即可。
           </div>
           <div class="luggage-box">🧳 热海酒店地址（寄行李用）：Hotel Resorpia Atami，需提前告知前台，黑猫宅急便可上门取件。费用约¥87（2,000円）/件。</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">07:30</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚆 锦系町→新宿→富士山五合目（约3小时）<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">
             <strong>最方便路线：</strong><br>
@@ -1314,13 +1340,14 @@
             💡 建议提前在网上或新宿高速巴士总站购票（旺季需预约）
           </div>
           <div class="info-box">⚠️ 注意：2026年富士山五合目每日限流，建议提前预约「富士山保全协力金」（约¥43（1,000円）/人），可在线登录。</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">11:00</div>
         <div class="tl-line-area"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🗻 富士山五合目（2305米）观景<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             ⏱️ 建议：2小时<br>
@@ -1332,27 +1359,28 @@
               <li>高度2305米，空气稀薄，老人小孩注意慢走、勿剧烈运动</li>
             </ul>
             🍜 五合目午餐：「富士山五合目レストハウス」山菜うどん（山菜乌冬面），约¥52–¥65（1,200–1,500円），体验在富士山上吃饭的感觉！
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=480&h=540&fit=crop" alt="富士山五合目"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">12:30</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍜 午餐 · 五合目山顶餐厅<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             就在五合目的餐厅，菜单简单，以乌冬面、咖喱饭为主。<br>
             推荐：<strong>山菜うどん（山菜乌冬面）</strong> + <strong>富士山まん（肉包）</strong>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">13:00</div>
         <div class="tl-line-area"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">💤 午睡时间 · 富士山巴士车上休息<span class="type-badge type-tips">👶 午休</span></div>
           <div class="nap-box">
             <div class="nap-title">💤 D5午睡：巴士/电车上自然入睡</div>
@@ -1367,13 +1395,14 @@
             </div>
             <div class="nap-tip">💡 建议带一条薄毯或外套，车上冷气较足。富士山海拔高，五合目温度比平地低10°C左右，下山前给孩子穿好外套。到达热海酒店约17:00，下午的午睡在车上已完成。</div>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">14:00</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚌 富士山五合目→热海（约2.5小时）<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">
             ① 富士山五合目→河口湖站（巴士，50分钟）<br>
@@ -1381,13 +1410,14 @@
             ③ 三岛→热海（JR东海道线，约30分钟，约¥17（400円）/人）<br>
             <strong>预计16:30–17:00抵达热海</strong>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">17:00</div>
         <div class="tl-line-area"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🏨 入住 热海Resorpia酒店<span class="type-badge type-hotel">入住</span></div>
           <div class="tl-desc">
             🌟 酒店特色：
@@ -1399,35 +1429,37 @@
             </ul>
           </div>
           <div class="alert-box">⚠️ 此酒店为 <strong>待付款</strong>！请务必于 <strong>5月29日前</strong> 在Agoda完成付款，否则预订取消！订单：1990408869</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">18:30</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍱 晚餐 · 酒店内日式料理<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             <strong>推荐①：酒店内餐厅</strong>（Resorpia酒店有附设餐厅，提供热海海鲜/静冈和牛套餐，约¥130–¥216（3,000–5,000円）/人）<br>
             <strong>推荐②：热海站前「热海银座商店街」</strong>：步行下山约20分钟，有多家性价比高的海鲜居酒屋<br>
             必吃：<strong>热海金目鲷（赤目鱼）</strong>——热海名物，刺身/盐烤/煮鱼皆宜，鲜甜肥美！
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">20:30</div>
         <div class="tl-line-area"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">♨️ 酒店露天温泉<span class="type-badge type-tips">体验</span></div>
           <div class="tl-desc">
             热海温泉（Atami Onsen）是日本三大温泉之一，含丰富碳酸矿物质，对皮肤、疲劳恢复极佳。<br>
             Resorpia酒店的露天风吕（Open-air bath）面向相模湾，夜晚泡汤可仰望星空、俯看城市灯光，极致体验！<br>
             ⏱️ 温泉开放：通常20:00–23:00（男女分开，请查看酒店公告）<br>
             💡 带孩子注意：水温通常42℃左右，儿童泡10–15分钟即可，不宜过长。
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=480&h=540&fit=crop" alt="露天温泉"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
     </div>
@@ -1452,20 +1484,21 @@
       <div class="tl-item">
         <div class="tl-left">07:30</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍳 酒店日式自助早餐<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             Resorpia酒店早餐：丰盛日式自助，<br>
             必尝：<strong>热海名物干物（鱼干）</strong>（金目鲷/鲭鱼干烤）、<strong>温泉玉子</strong>（溏心蛋）、静冈抹茶豆腐<br>
             孩子推荐：日式厚蛋卷（玉子烧）、白米饭+纳豆
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">09:30</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🎨 MOA美术馆<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             📍 乘当地巴士：热海站→MOA美术館（约10分钟，210円）<br>
@@ -1479,15 +1512,15 @@
             </ul>
             🎟️ 门票：约¥69（1,600円）大人，小学生以下免费<br>
             👶 带孩子亮点：巨大的Noh能乐舞台复原，可免费体验穿戴能面
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=480&h=540&fit=crop" alt="MOA美术馆"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">12:00</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🐟 午餐 · 热海「魚忠」金目鲷料理<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             📍 热海站附近，步行5分钟<br>
@@ -1495,13 +1528,14 @@
             必点：<strong>金目鲷定食</strong>（煮鱼+白饭+味噌汤+小菜），鲜甜入味！<br>
             备选：「さのきや」（沙丁鱼饭定食，约¥52（1,200円），超当地味）
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">13:00</div>
         <div class="tl-line-area"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">💤 午睡时间 · 回Resorpia酒店午睡<span class="type-badge type-tips">👶 午休</span></div>
           <div class="nap-box">
             <div class="nap-title">💤 D6午睡：回酒店房间午睡（最舒适）</div>
@@ -1516,13 +1550,14 @@
             </div>
             <div class="nap-tip">💡 午睡期间大人也可以休息一下。酒店温泉下午通常也开放，孩子睡觉时可以轮流泡温泉。14:30出发去热海城，时间完全来得及。</div>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">14:00</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🏯 热海城 + 锦ヶ浦<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             📍 乘出租车或巴士：热海站→热海城（约15分钟）<br>
@@ -1531,28 +1566,29 @@
             内有<strong>忍者中心</strong>（武器体验、手里剑）、<strong>小熊猫展区</strong>——孩子非常喜欢！<br>
             🎟️ 门票：约¥35（800円）大人，约¥17（400円）儿童<br>
             锦ヶ浦海岸：悬崖海岸，波涛汹涌，自然景观壮阔，拍照绝美。
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=480&h=540&fit=crop" alt="热海城"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">16:30</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🏖️ 热海砂滨海岸 · 傍晚漫步<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             热海砂滨（Atami Beach）：相模湾边的城市海滩，傍晚阳光洒在海面上金光熠熠。<br>
             孩子可以捡贝壳、玩水，大人可以海边咖啡🍦。<br>
             推荐：海滩边的「なぎさ公园」，有小型喷水广场，孩子玩水最佳！
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">18:00</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🦞 晚餐 · 热海银座商店街 海鲜居酒屋<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             热海银座商店街集中大量海鲜直销店和居酒屋：<br>
@@ -1562,16 +1598,18 @@
               <li>必吃：<strong>热海温泉卵プリン（温泉布丁）</strong>——热海名物甜点，超嫩超鲜！</li>
             </ul>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">20:30</div>
         <div class="tl-line-area"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">♨️ 酒店温泉 · 第二晚<span class="type-badge type-tips">体验</span></div>
           <div class="tl-desc">今晚可尝试早上泡（朝风呂），明早6:00前入浴，感受日出温泉！</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1596627116790-af6f46dddbfd?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
     </div>
@@ -1596,28 +1634,30 @@
       <div class="tl-item">
         <div class="tl-left">07:30</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍳 酒店早餐<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">同昨日，丰盛日式早餐，今天出发稍晚，慢慢享用。</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">09:00</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚆 热海→修善寺（约40分钟）<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">
             热海站→三岛站（JR东海道线，约25分钟，400円）→ 三岛→修善寺（伊豆箱根铁道，约30分钟，520円）<br>
             总费用约¥40（920円）/人
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">10:00</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🌿 修善寺温泉 + 独鈷の湯 + 修禅寺<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             ⏱️ 游览：2–2.5小时<br>
@@ -1629,28 +1669,29 @@
               <li><strong>足湯</strong>：免费足汤，泡脚放松（儿童非常喜欢！）</li>
             </ul>
             🛍️ 购物：伊豆名物「わさび漬け（山葵泡菜）」、「修善寺饼」
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=480&h=540&fit=crop" alt="修善寺竹林"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1596627116790-af6f46dddbfd?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1596627116790-af6f46dddbfd?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">12:30</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍣 午餐 · 修善寺温泉街「桂川」<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             温泉街内的「桂川」老铺，或附近的小食堂：<br>
             <strong>推荐：「くるまや本店」伊豆山葵そば（山葵荞麦面）</strong>，用新鲜本山葵现磨，清爽辛香，约¥65（1,500円）<br>
             备选：「雅庵」豆腐料理（修善寺名物豆腐料理，约2000円）
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1596627116790-af6f46dddbfd?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">13:30</div>
         <div class="tl-line-area"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">💤 午睡时间 · 修善寺温泉街咖啡店/足汤区<span class="type-badge type-tips">👶 午休</span></div>
           <div class="nap-box">
             <div class="nap-title">💤 D7午睡：修善寺温泉街休憩</div>
@@ -1665,22 +1706,24 @@
             </div>
             <div class="nap-tip">💡 修善寺温泉街氛围悠闲安静，比东京更适合午休。6月伊豆气候舒适，在竹林里乘凉非常惬意。如果孩子午睡时间超1小时，建议直接回热海，不赶去净莲瀑布。</div>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1596627116790-af6f46dddbfd?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">14:00</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚌 修善寺→净莲瀑布（约20分钟巴士）<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">乘东海巴士：修善寺→净莲の滝（约20–25分钟，430円）</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">14:30</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">💧 净莲瀑布（静岡県天然記念物）<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             ⏱️ 游览：1小时<br>
@@ -1689,26 +1732,27 @@
             夏天瀑布水雾弥漫，清凉舒适！<br>
             旁边有「浄蓮の滝売店」，可购买山葵冰淇淋（必吃！绿色辣辣甜甜，特别好吃）<br>
             🎟️ 免费（停车费300円）
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=480&h=540&fit=crop" alt="净莲瀑布"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">16:00</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚆 返回热海（约1.5小时）<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">
             净莲瀑布→修善寺（巴士）→三岛→热海（JR），总约1.5小时
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">18:30</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍱 晚餐 · 热海「初魚」怀石料理（最后温泉夜，犒劳一下）<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             今晚是在热海的最后一晚，可以稍微犒劳一下自己！<br>
@@ -1716,7 +1760,8 @@
             <strong>经济选择：「あいかわ食堂」</strong>——老铺家庭食堂，金目鲷定食约¥78（1,800円），量足实惠<br>
             记得：今晚是最后一次泡温泉！好好享受！
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
     </div>
@@ -1741,29 +1786,31 @@
       <div class="tl-item">
         <div class="tl-left">07:30</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍳 酒店最后一次早餐<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">充分利用含早餐，吃好出发！</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">09:00</div>
         <div class="tl-line-area"><div class="tl-dot gray"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🧳 退房 · 整理行李<span class="type-badge type-tips">提示</span></div>
           <div class="tl-desc">
             热海酒店11:00前退房。<br>
             行李可在前台暂存（寄存至下午出发前）。
           </div>
           <div class="luggage-box">🧳 行李策略：大行李寄存在热海酒店前台，中午购物/游玩后取回，再出发去成田。或办理黑猫宅急便直送成田酒店。</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">10:00</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🛍️ 热海早市 · 干物购买伴手礼<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             热海银座商店街早市：购买回国伴手礼！<br>
@@ -1773,27 +1820,28 @@
               <li><strong>温泉饼干/羊羹</strong>：热海限定，约¥13–¥35（300–800円）/盒</li>
               <li><strong>静冈茶</strong>（深蒸绿茶，约¥43–¥87（1,000–2,000円））</li>
             </ul>
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=480&h=540&fit=crop" alt="热海商店街"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">12:00</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍣 午餐 · 热海最后一餐<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             <strong>推荐：「海女の磯料理 鶴吉」</strong>：海女直送的新鲜海产，海鲜丼约¥87（2,000円），人气超高！<br>
             或「熱海魚市場」：直销市场，现场选鱼现做，超新鲜！
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">13:00</div>
         <div class="tl-line-area"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">💤 午睡时间 · 去成田的电车上补觉<span class="type-badge type-tips">👶 午休</span></div>
           <div class="nap-box">
             <div class="nap-title">💤 D8午睡：JR东海道线+成田特快车上休息</div>
@@ -1807,26 +1855,28 @@
             </div>
             <div class="nap-tip">💡 又是车上午睡的一天！建议提前在热海便利店买好零食和水，上车后给孩子吃点东西就更容易睡着。到达成田后孩子精力恢复，可以好好逛AEON商场最后采购。</div>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">13:30</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚆 热海→成田机场（约2.5–3小时）<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">
             热海站→东京站（JR东海道线新干线/普通，约50–90分钟）<br>
             → 东京站→成田机场T1（JR成田特快NEX，约55分钟，3070円）<br>
             总费用约¥173–¥216（4,000–5,000円）/人
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">17:00</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🛍️ 成田机场附近 · 免税店 + AEON商场<span class="type-badge type-sight">景点</span></div>
           <div class="tl-desc">
             成田机场旁的「イオンモール（AEON Mall）成田」——大型购物中心：<br>
@@ -1836,13 +1886,14 @@
               <li>孩子：玩具大卖场（トイザらス），最后再买一样玩具！</li>
             </ul>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">18:30</div>
         <div class="tl-line-area"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🏨 入住 东横INN成田机场本馆（第二次）<span class="type-badge type-hotel">入住</span></div>
           <div class="tl-desc">
             再次入住此酒店，明日早起赶飞机方便！<br>
@@ -1850,26 +1901,27 @@
             Check-in 15:00后，Check-out 10:00前（明日09:20飞机，请务必08:00前出发去机场！）
           </div>
           <div class="alert-box">⚠️ 此酒店（6月6–7日）为 <strong>待付款</strong>！请于 <strong>6月5日11:00（成田当地时间）前</strong> 在Halalbooking完成付款！订单：6078940，金额：€58.48</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">19:30</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍣 晚餐 · 成田市「川豊」鳗鱼饭（再吃一次！）或酒店周边<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">
             <strong>「川豊」鳗鱼饭</strong>（成田山参道老铺，三代传承），最后一晚好好犒劳自己！<br>
             备选：成田机场国际航站楼内的餐厅（方便次日赶路）
-          </div>
-          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=480&h=540&fit=crop" alt="鳗鱼饭"></div></div>
-        </div>
+          </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">21:00</div>
         <div class="tl-line-area"><div class="tl-dot gray"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🎒 整理行李，准备回程<span class="type-badge type-tips">提示</span></div>
           <div class="tl-desc">
             <ul>
@@ -1878,7 +1930,8 @@
               <li>明日飞机 09:20，请<strong>06:30起床，07:30前到达T1办值机</strong></li>
             </ul>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
     </div>
@@ -1902,37 +1955,40 @@
       <div class="tl-item">
         <div class="tl-left">06:30</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">⏰ 起床 · 快速收拾<span class="type-badge type-tips">提示</span></div>
           <div class="tl-desc">酒店早餐可能07:00开放，可快速吃完或打包，<strong>07:30务必出发</strong>！</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">07:00</div>
         <div class="tl-line-area"><div class="tl-dot orange"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🍳 酒店早餐（含）<span class="type-badge type-food">餐食</span></div>
           <div class="tl-desc">东横INN免费早餐，简单吃完，保证体力。</div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">07:30</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🚌 前往成田机场T1（步行/接驳）<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">
             东横INN提供免费接驳至机场，或步行约10分钟至T1。<br>
             <strong>⏰ 建议 08:00前到达T1值机柜台</strong>（航班09:20出发，提前至少90分钟）
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">08:00</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">✈️ 值机 + 安检 + 过境<span class="type-badge type-transport">交通</span></div>
           <div class="tl-desc">
             全日空NH919柜台值机，检查护照+机票<br>
@@ -1944,13 +2000,14 @@
               <li>高丝/SK-II化妆品（机场免税比市区便宜5–10%）</li>
             </ul>
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">09:20</div>
         <div class="tl-line-area"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">✈️ NH919 起飞 · 成田→上海浦东<span class="type-badge type-transport">飞行</span></div>
           <div class="tl-desc">
             ✈️ 航班：全日空 NH919<br>
@@ -1959,20 +2016,22 @@
             飞行时间：约2小时20分钟<br>
             机上提供早午餐，可好好补眠！
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-left">11:40</div>
         <div class="tl-line-area"><div class="tl-dot green"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
+        <div class="tl-content"><div class="tl-text">
           <div class="tl-title">🏠 抵达上海浦东T2 · 回家！<span class="type-badge type-tips">提示</span></div>
           <div class="tl-desc">
             通关、取行李后，乘地铁/出租/网约车回家。<br>
             🎉 9天8晚的日本之旅圆满结束！<br>
             记得把IC卡上多余的金额退款（机场内有IC卡退款机）或留作下次日本游用。
           </div>
-        </div>
+        </div></div>
+          <div class="item-images"><div class="item-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="行程配图" loading="lazy"></div></div></div>
       </div>
 
     </div>
